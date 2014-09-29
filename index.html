@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Does your team Grunt when it codes? It probably should.</title>
+
+        <meta name="description" content="Talking about my experiences using the gruntjs task runner and how it may help you.">
+        <meta name="author" content="Scott Gowell">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Using Javascript Task Runners for Fun and Profit</h1>
+                </section>
+
+                <section id="INTRO">
+                    <h2>Welcome</h2>
+                    <p>
+                        We are going to be talking about the GruntJS Task Runner, and the tools you need to use to leverage it in your design and development team's workflow.
+                    </p>
+                </section>
+                 <section id="WHO">
+                    <h1>I am Scott ...
+                        <br />who are you?</h1>
+                </section>
+
+                 <section id="QUE?">
+                    <h2>Are you speaking complete sentences?</h2>
+                    <p>
+                        NodeJS, NPM, Grunt .... Yes I am speaking English.
+                    </p>
+                </section>
+
+                <section id="WHY">
+                    <section id="WHY_ME">
+                    <h2>But why would I need this?</h2>
+                    <p>
+                        Because your time is too valuable to spend it doing any task that can be automated.
+                    </p>
+                        </section>
+                    <section id="WHY_THIS">
+                    <h2>Tasks that can be automated quickly?</h2>
+                    <p>
+                        <ul>
+                            <li>Compile SASS/LESS</li>
+                            <li>Obfuscate/Minify Code</li>
+                            <li>Serve your working directory as a web site.</li>
+                            <li><a href="http://gruntjs.com/plugins">...Lots of stuff</a></li>
+                        </ul>
+                        </p>
+                    </section>
+                    <section id="WHY_NOT">
+                        <h2>Do you like it Scott?</h2>
+                        <img src="images/ilikeit.gif" />
+                        </section>
+                </section>
+
+                <section id="HOW">
+                    <section id="HOW_INSTALL_NODE">
+                        <h2>Installation - NodeJS</h2>
+                        <p>
+                            First we must install <a href="http://nodejs.org/">NodeJS</a>
+                        </p>
+                    </section>
+
+                    <section id="HOW_INSTALL_GRUNT">
+                        <h2>Installation - GruntJS</h2>
+                        <p>
+                        This installs the GruntJS Command Line Interface tool globally on your system.
+                        </p>
+                        <pre><code>npm install -g grunt-cli</code></pre>
+                    </section>
+                    <section id="HOW_CONFIGURE_GRUNT">
+                        <h2>Configuration - GruntJS</h2>
+                        <p>
+                            Two files we need to use GruntJS
+                            <li>package.json</li>
+                            <li>Gruntfile.js</li>
+                        </p>
+                    </section>
+                    <section id="HOW_BUILD_PACKAGE">
+                        <h2>package.json Wizard </h2>
+                    <pre><code>npm init</code></pre>
+                        <img src="images/wwwyzzerdd.jpg" />
+                    </section>
+                    <section id="HOW_BUILD_GRUNTFILE">
+                        <h2>Making your Gruntfile.js</h2>
+
+                        <pre><code>
+module.exports = function(grunt) {
+
+   // Project configuration.
+   grunt.initConfig({
+     pkg: grunt.file.readJSON('package.json'),
+    // Tasks
+   });
+
+   // Load the plugin that provides the "whatever" task.
+   grunt.loadNpmTasks('');
+
+   // Default task(s).
+   grunt.registerTask('default', ['']);
+
+ };
+                         </code></pre>
+                    </section>
+                    <section id="HOW_INSTALL_PLUGINS">
+                        <h2>BUT I WANT IT TO DO STUFF!?!</h2>
+                        <p><img src="images/hello.jpg"></p>
+                    </section>
+                    <section id="HOW_INSTALL_PLUGINS_2">
+                        <h2>Install Plugin - CONNECT</h2>
+                        <pre><code>npm install grunt-contrib-connect --save-dev</code></pre>
+<small>Register this module in your gruntfile</small>
+                        <pre><code>grunt.loadNpmTasks('grunt-contrib-connect');</code></pre>
+                    </section>
+                                        <section id="HOW_INSTALL_PLUGINS_3">
+                        <h2>Configure Plugin - CONNECT</h2>
+         <pre><code>
+module.exports = function(grunt) {
+   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    connect: {
+        server: {
+            options: {
+                port: 8000,
+                base: '.'
+            }
+        }
+    }
+   });
+   grunt.loadNpmTasks('grunt-contrib-connect');
+   grunt.registerTask('default', ['connect']);
+ };
+                         </code></pre>
+
+                    </section>
+                </section>
+                <section id="WAT?!?">
+                    <h1>LIVE CODING</h1>
+                    <img src="images/livecoding.gif" />
+                </section>
+
+                <section id="HRMM">
+                    <h2>QUESTIONS/COMMENTS/CONCERNS</h2>
+                </section>
+
+                <section id="Links">
+                    <h2>Links</h2>
+                    <ul>
+                        <li><a href="http://www.hanselman.com/blog/IntroducingGulpGruntBowerAndNpmSupportForVisualStudio.aspx">Grunt, Gulp, Bower, and NPM in Visual Studio</a></li>
+                        <li><a href="https://github.com/hakimel/reveal.js">Revealjs Presentation Source code on GitHub</a></li>
+                        <li><a href="http://nodejsreactions.tumblr.com/">NodeJS Reactions</a></li>
+                    </ul>
+                </section>
+
+                <section id="ThankYou">
+                    <h1>Thank you for listening!</h1>
+                    <h3>Scott Gowell<br />scott@gravityworksdesign.com - @sgowell</h3>
+                </section>
+
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
